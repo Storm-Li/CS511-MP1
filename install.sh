@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo cp mongodb-org-3.4.repo /etc/yum.repo.d/mongodb-org-3.4.repo
+sudo cp mongodb-org-3.4.repo /etc/yum.repos.d/mongodb-org-3.4.repo
 sudo yum install -y mongodb-org
 sudo cp disable-transparent-hugepages /etc/init.d/disable-transparent-hugepages
 sudo chmod 755 /etc/init.d/disable-transparent-hugepages
