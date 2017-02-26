@@ -1,0 +1,18 @@
+var mapf = function() { 
+	for (var i = 0; i < this.grades.length; i++) {
+		emit(this.name, this.grades[i].score);
+	}
+}
+
+var reducef = function(name, score) {
+	return Array.sum(score);
+}
+
+db.restaurants.mapReduce(mapf,reducef, {
+	out: "restaurants_aroud_morris_park_bake_shop",
+	query: {
+		"address.coord": {$geoWithin: {$center: [[-73.856077, 40.848447], 0.015]}}
+	}
+})
+
+db.restaurants_aroud_morris_park_bake_shop.find().sort({"value":-1}).limit(10)
